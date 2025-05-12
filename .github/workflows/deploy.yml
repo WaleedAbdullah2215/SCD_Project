@@ -31,4 +31,8 @@ jobs:
       - name: Deploy to Minikube
         run: |
           kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
+          kubectl apply -f service.yaml 
+
+      - name: Port forward services to localhost
+        run: |
+          nohup kubectl port-forward service/golocal-guide-service 3000:3000 5000:5000 &
