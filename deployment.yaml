@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golocal-guide-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: golocal-guide
+  template:
+    metadata:
+      labels:
+        app: golocal-guide
+    spec:
+      containers:
+        - name: golocal-guide
+          image: waleed2215/scdplozekt:latest
+          ports:
+            - containerPort: 5000
+            - containerPort: 3000
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongodb-service:27017/WebProject"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

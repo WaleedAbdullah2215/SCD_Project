@@ -22,7 +22,8 @@ ENV MONGO_URI="mongodb://host.docker.internal:27017/webprojectDB"
 ENV JWT_SECRET="super_secure_key_123!@#"
 
 # Expose ports for client and server
-EXPOSE 3000 5000
+EXPOSE 3000 
+EXPOSE 5000
 
 # Start the app (assumes your dev script runs both client and server)
 CMD ["npm", "run", "dev"]
